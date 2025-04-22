@@ -1,0 +1,10 @@
+
+Addition : 10 + 20 => 30
+Subtraction : 10 - 20 => -10
+Multiplication : 10 * 20 => 200
+Division : 10 / 20 => 0.5
+
+Addition : 10 + 20 => 30
+Subtraction : 10 - 20 => -10
+Multiplication : 10 * 20 => 200
+Division : 10 / 20 => 0.5
