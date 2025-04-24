@@ -1,0 +1,73 @@
+[
+    {
+      "id": 1,
+      "name": "Emily Johnson",
+      "email": "emily.johnson@x.dummyjson.com",
+      "role": "admin",
+      "title": "Sales Manager"
+    },
+    {
+      "id": 2,
+      "name": "Michael Williams",
+      "email": "michael.williams@x.dummyjson.com",
+      "role": "admin",
+      "title": "Support Specialist"
+    },
+    {
+      "id": 3,
+      "name": "Sophia Brown",
+      "email": "sophia.brown@x.dummyjson.com",
+      "role": "admin",
+      "title": "Accountant"
+    },
+    {
+      "id": 4,
+      "name": "James Davis",
+      "email": "james.davis@x.dummyjson.com",
+      "role": "admin",
+      "title": "Research Analyst"
+    },
+    {
+      "id": 5,
+      "name": "Emma Miller",
+      "email": "emma.miller@x.dummyjson.com",
+      "role": "admin",
+      "title": "Quality Assurance Engineer"
+    },
+    {
+      "id": 6,
+      "name": "Olivia Wilson",
+      "email": "olivia.wilson@x.dummyjson.com",
+      "role": "moderator",
+      "title": "Research Analyst"
+    },
+    {
+      "id": 7,
+      "name": "Alexander Jones",
+      "email": "alexander.jones@x.dummyjson.com",
+      "role": "moderator",
+      "title": "Web Developer"
+    },
+    {
+      "id": 8,
+      "name": "Ava Taylor",
+      "email": "ava.taylor@x.dummyjson.com",
+      "role": "moderator",
+      "title": "Chief Executive Officer"
+    },
+    {
+      "id": 9,
+      "name": "Ethan Martinez",
+      "email": "ethan.martinez@x.dummyjson.com",
+      "role": "moderator",
+      "title": "Legal Counsel"
+    },
+    {
+      "id": 10,
+      "name": "Isabella Anderson",
+      "email": "isabella.anderson@x.dummyjson.com",
+      "role": "moderator",
+      "title": "Chief Financial Officer"
+    }
+  ]
+  
