@@ -1,0 +1,149 @@
+[
+    {
+        "id": 1,
+        "name": "Emma Johnson",
+        "email": "emma.johnson@x.dummyjson.com",
+        "role": "admin",
+        "title": "QA Engineer"
+    },
+    {
+        "id": 2,
+        "name": "Liam Brown",
+        "email": "liam.brown@x.dummyjson.com",
+        "role": "admin",
+        "title": "Data Analyst"
+    },
+    {
+        "id": 3,
+        "name": "Olivia Wilson",
+        "email": "olivia.wilson@x.dummyjson.com",
+        "role": "admin",
+        "title": "Mobile Developer"
+    },
+    {
+        "id": 4,
+        "name": "James Davis",
+        "email": "james.davis@x.dummyjson.com",
+        "role": "admin",
+        "title": "Research Analyst"
+    },
+    {
+        "id": 5,
+        "name": "Sophia Martinez",
+        "email": "sophia.martinez@x.dummyjson.com",
+        "role": "admin",
+        "title": "Cloud Engineer"
+    },
+    {
+        "id": 6,
+        "name": "Sumit Kumar",
+        "email": "sumit.kumar@x.dummyjson.com",
+        "role": "admin",
+        "title": "Software dev"
+    },
+    {
+        "id": 7,
+        "name": "Parmeet Kumar",
+        "email": "p.birwal@x.dummyjson.com",
+        "role": "admin",
+        "title": "engineer"
+    },
+    {
+        "id": 8,
+        "name": "Michael Jordan",
+        "email": "M.jordan@x.dummyjson.com",
+        "role": "admin",
+        "title": "Web Dev"
+    },
+    {
+        "id": 9,
+        "name": "Alicia Roberts",
+        "email": "alicia.roberts@x.dummyjson.com",
+        "role": "admin",
+        "title": "UI/UX Designer"
+    },
+    {
+        "id": 10,
+        "name": "Rahul Singh",
+        "email": "rahul.singh@x.dummyjson.com",
+        "role": "admin",
+        "title": "Product Manager"
+    },
+    {
+        "id": 11,
+        "name": "Emily Chen",
+        "email": "emily.chen@x.dummyjson.com",
+        "role": "admin",
+        "title": "Data Scientist"
+    },
+    {
+        "id": 12,
+        "name": "Carlos Rivera",
+        "email": "carlos.rivera@x.dummyjson.com",
+        "role": "admin",
+        "title": "Backend Developer"
+    },
+    {
+        "id": 13,
+        "name": "Fatima Zahra",
+        "email": "fatima.zahra@x.dummyjson.com",
+        "role": "admin",
+        "title": "DevOps Engineer"
+    },
+    {
+        "id": 14,
+        "name": "Liam O'Connor",
+        "email": "liam.oconnor@x.dummyjson.com",
+        "role": "admin",
+        "title": "System Architect"
+    },
+    {
+        "id": 15,
+        "name": "Sophie Dubois",
+        "email": "sophie.dubois@x.dummyjson.com",
+        "role": "admin",
+        "title": "Business Analyst"
+    },
+    {
+        "id": 16,
+        "name": "Tomoko Sato",
+        "email": "tomoko.sato@x.dummyjson.com",
+        "role": "admin",
+        "title": "Full Stack Developer"
+    },
+    {
+        "id": 17,
+        "name": "Noah Müller",
+        "email": "noah.muller@x.dummyjson.com",
+        "role": "admin",
+        "title": "Security Engineer"
+    },
+    {
+        "id": 18,
+        "name": "Chen Wei",
+        "email": "chen.wei@x.dummyjson.com",
+        "role": "admin",
+        "title": "AI Specialist"
+    },
+    {
+        "id": 19,
+        "name": "Isabella Rossi",
+        "email": "isabella.rossi@x.dummyjson.com",
+        "role": "admin",
+        "title": "Technical Writer"
+    },
+    {
+        "id": 20,
+        "name": "Ahmed El-Sayed",
+        "email": "ahmed.elsayed@x.dummyjson.com",
+        "role": "admin",
+        "title": "Machine Learning Engineer"
+    },
+    {
+        "id": 21,
+        "name": "Michael Jordan",
+        "email": "M.jordan@x.dummyjson.com",
+        "role": "admin",
+        "title": "Web Dev"
+    }
+]
