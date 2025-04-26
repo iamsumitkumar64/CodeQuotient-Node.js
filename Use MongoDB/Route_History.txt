@@ -1,0 +1,8 @@
+Url Visited :	/	GET
+Url Visited :	/	GET
+Url Visited :	/	GET
+Url Visited :	/	POST
+Url Visited :	/	POST
+Url Visited :	/user/680b98b2f44cfcf3f2f9e803	GET
+Url Visited :	/user/	GET
+Url Visited :	/user/	GET
