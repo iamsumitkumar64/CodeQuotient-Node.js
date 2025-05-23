@@ -1,10 +1,11 @@
 const args = process.argv.slice(2);
 // process ===>gives deatils within object
-// process.argv ===>gives detaisl within array of 3 
-// 1=>node.js path where to execute
-// 2=>file path what to excute
-// 3,4,..n=>arguments to be given
+// process.argv ===>gives detaisl within array of 2  upto N
+    // 1=>node.js path where to execute
+    // 2=>file path what to excute
+    // 3,4,..n=>N arguments to be given
 console.log(process.argv);
+console.log(args);
 
 const fs = require("fs");
 
