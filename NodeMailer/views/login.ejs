@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6e6d6d;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 4vmin;
+            margin-bottom: 2vmin;
+        }
+
+        body>div {
+            display: flex;
+            gap: 3vmax;
+        }
+
+        ::selection {
+            color: red;
+            background-color: black;
+        }
+
+        form {
+            color: white;
+            background-color: #000000;
+            padding: 5%;
+            font-size: 2vmax;
+            font-weight: 900;
+            border-radius: 1vmin;
+            box-shadow: 0 0 10vmin rgba(0, 0, 0, 0.1);
+            width: 50vmin;
+        }
+
+        ::placeholder {
+            color: black;
+        }
+
+        .text {
+            font-size: 2vmin;
+            margin-bottom: 1vmin;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 95%;
+            padding: 1.5vmin;
+            margin-bottom: 2vmin;
+            border: 1px solid #ccc;
+            border-radius: 0.5vmin;
+            font-size: 2vmin;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        button {
+            padding: 1.5vmin;
+            background-color: #007BFF;
+            color: white;
+            font-weight: 900;
+            border: none;
+            border-radius: 0.5vmin;
+            font-size: 2vmin;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #003670;
+        }
+
+        aside {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 1.5vmin;
+            padding: 2vmin 3vmin;
+            max-width: fit-content;
+            max-height: fit-content;
+            margin: 0 auto 4vmin;
+            font-size: 3vmin;
+            line-height: 1.5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            color: #dcdcdc;
+        }
+
+        aside h2 {
+            font-size: 3.5vmin;
+            margin-bottom: 1.5vmin;
+            text-align: center;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+        }
+
+        aside ul {
+            list-style: inside disc;
+            padding-left: 0;
+        }
+
+        aside ul li {
+            margin-bottom: 1vmin;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LOGIN PORTAL</h1>
+    <div>
+        <aside>
+            <h2>Password Requirements</h2>
+            <ul>
+                <li>At least 1 uppercase letter</li>
+                <li>At least 1 digit</li>
+                <li>At least 1 special character (e.g. !@#$%^&*)</li>
+                <li>Minimum length: 6 characters</li>
+            </ul>
+        </aside>
+
+        <form method="post" action="/login">
+            <label for="name" class="text">Enter Email :</label>
+            <input type="email" placeholder="Enter Email" name="email" required>
+
+            <label for="pass" class="text">Enter Password :</label>
+            <input type="password" name="pass" placeholder="e.g=@H21" required>
+
+            <button type="submit">Submit</button>
+            <button>Create New Account</button>
+            <button>Forget Password</button>
+        </form>
+    </div>
+    <script>
+        document.querySelectorAll('button')[1].addEventListener('click', () => {
+            window.location.href = '/signup';
+        });
+        document.querySelectorAll('button')[2].addEventListener('click', () => {
+            window.location.href = '/forget';
+        });
+    </script>
+</body>
+
+</html>

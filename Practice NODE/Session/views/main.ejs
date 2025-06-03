@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birwal - Responsive Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2vmin;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 2vmin;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        main {
+            flex: 1;
+            padding: 2vmin;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        section {
+            width: 80vmin;
+            margin: 2vmin 0;
+            padding: 2vmin;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 2vmin;
+        }
+
+        img {
+            margin-top: 3vmax;
+            border-radius: 1rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            animation: floatRotateScale 6s ease-in-out infinite;
+            cursor: pointer;
+            transition: all .5s ease;
+        }
+
+        img:hover {
+            scale: 1.1;
+        }
+
+        @keyframes floatRotateScale {
+            0% {
+                transform: scale(1) rotate(0deg) translateY(0);
+                filter: drop-shadow(0 0 5px #3ec6ff);
+            }
+
+            25% {
+                transform: scale(1.05) rotate(5deg) translateY(-10px);
+                filter: drop-shadow(5px 10px 10px #3ec6ff99);
+            }
+
+            50% {
+                transform: scale(1) rotate(0deg) translateY(0);
+                filter: drop-shadow(0 0 5px #3ec6ff);
+            }
+
+            75% {
+                transform: scale(0.95) rotate(-5deg) translateY(-10px);
+                filter: drop-shadow(-5px 10px 10px #3ec6ff99);
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg) translateY(0);
+                filter: drop-shadow(0 0 5px #3ec6ff);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Birwal</h1>
+    </header>
+
+    <nav>
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Contact</a>
+    </nav>
+    <main>
+        <img src="https://i.pinimg.com/originals/5e/e5/41/5ee541edd1960466e4f30bd90a3d0590.gif" alt="">
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Birwal. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

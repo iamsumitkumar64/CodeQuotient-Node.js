@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Update</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(46, 46, 46);
+            margin: 0;
+            padding: 5vmin;
+            color: #f0f0f0;
+        }
+
+        body>div {
+            display: flex;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header>div {
+            display: flex;
+            gap: 2vmax;
+        }
+
+        h1 {
+            font-size: 4vmin;
+            margin-bottom: 4vmin;
+            text-align: center;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        }
+
+        form {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 2vmin;
+            max-width: 80vmin;
+            margin: 0 auto;
+            padding: 3vmin 4vmin;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        label {
+            display: block;
+            font-size: 3vmin;
+            margin-bottom: 1vmin;
+            font-weight: 600;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+        }
+
+        input {
+            width: 100%;
+            padding: 1.5vmin 1.8vmin;
+            font-size: 3vmin;
+            border: none;
+            border-radius: 1vmin;
+            margin-bottom: 4vmin;
+            font-family: inherit;
+        }
+
+        button {
+            display: block;
+            /* width: 100%; */
+            background-color: #2575fc;
+            font-size: 3.5vmin;
+            border: none;
+            border-radius: 2vmin;
+            padding: 1.5vmin;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0a6d9b;
+        }
+
+        aside {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 1.5vmin;
+            padding: 2vmin 3vmin;
+            max-width: 80vmin;
+            margin: 0 auto 4vmin;
+            font-size: 3vmin;
+            line-height: 1.5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            color: #dcdcdc;
+        }
+
+        aside h2 {
+            font-size: 3.5vmin;
+            margin-bottom: 1.5vmin;
+            text-align: center;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+        }
+
+        aside ul {
+            list-style: inside disc;
+            padding-left: 0;
+        }
+
+        aside ul li {
+            margin-bottom: 1vmin;
+        }
+
+        ::selection {
+            color: red;
+            background-color: black;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 5vmin 5vmin;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Update Portal</h1>
+        <div>
+            <button>Main Page</button>
+            <button>LogOut</button>
+        </div>
+    </header>
+    <div>
+        <aside>
+            <h2>Password Requirements</h2>
+            <ul>
+                <li>At least 1 uppercase letter</li>
+                <li>At least 1 digit</li>
+                <li>At least 1 special character (e.g. !@#$%^&*)</li>
+                <li>Minimum length: 6 characters</li>
+            </ul>
+        </aside>
+
+        <form action="/update" method="post" id="myForm">
+            <label for="password">Password</label>
+            <input type="text" id="password" name="pass" required />
+
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="c_pass" required />
+
+            <button type="submit">Update Password</button>
+        </form>
+    </div>
+    <script>
+        document.querySelectorAll('button')[0].addEventListener('click', () => {
+            console.log('ji')
+            window.location.href = '/main';
+        });
+        document.querySelectorAll('button')[1].addEventListener('click', () => {
+            console.log('ji')
+            window.location.href = '/logout';
+        });
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            let pass = document.getElementById('password').value;
+            let c_pass = document.getElementById('confirm-password').value;
+
+            if (pass !== c_pass) {
+                event.preventDefault();
+                alert("Passwords do not match!");
+            }
+        });
+    </script>
+</body>
+
+</html>

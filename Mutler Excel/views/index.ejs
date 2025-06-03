@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Birwal Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            scrollbar-width: none;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #002850;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+        }
+
+        form {
+            background: white;
+            padding: 4vmin 5vmin;
+            border-radius: 2vmin;
+            box-shadow: 0 1vmin 3vmin rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 40vmax;
+            min-width: 25vmax;
+            margin-top: 1vmax;
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+            font-weight: 600;
+            font-size: 3vmin;
+        }
+
+        label {
+            display: block;
+            margin-top: 3vmin;
+            font-weight: 600;
+            color: #555;
+            cursor: pointer;
+            user-select: none;
+            font-size: 2.5vmin;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            margin-top: 1vmin;
+            width: 100%;
+            padding: 1.5vmin 2vmin;
+            font-size: 2.5vmin;
+            border: 0.4vmin solid #ccc;
+            border-radius: 1.5vmin;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        button {
+            margin-top: 4vmin;
+            width: 100%;
+            background: #4a90e2;
+            border: none;
+            padding: 2vmin 0;
+            color: white;
+            font-weight: 700;
+            font-size: 3vmin;
+            border-radius: 2vmin;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover,
+        button:focus {
+            background: #357ABD;
+            outline: none;
+        }
+
+        /* For smaller screens */
+        @media (max-width: 420px) {
+            form {
+                margin: 0 5%;
+                max-width: 90vw;
+                min-width: auto;
+            }
+        }
+
+        #excelTable {
+            border-collapse: collapse;
+            margin-top: 1vmax;
+            width: 100%;
+            font-size: 2.2vmin;
+            text-align: center;
+        }
+
+        .excel-header-cell {
+            border: 1px solid #3db7fd;
+            padding: 1vmin;
+            background: #30302f;
+            font-weight: bold;
+            color: white;
+        }
+
+        .excel-cell {
+            border: 1px solid #00ccff;
+            padding: 1vmin;
+        }
+
+        .excel-row {
+            color: rgb(255, 238, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <form enctype="multipart/form-data">
+        <h2>Upload Form</h2>
+        <label for="username">Your Name</label>
+        <input type="text" id="username" name="username" placeholder="Enter your name" required />
+
+        <label for="fileupload">Choose Files</label>
+        <input type="file" id="fileupload" name="files" multiple required />
+        <!-- <input type="file" id="fileupload" accept=".xlsx" name="files" multiple required/> -->
+
+        <button type="submit">Upload</button>
+    </form>
+    <aside id="aside"></aside>
+</body>
+<script>
+    let form = document.querySelector('form');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        getdata('/index');
+    });
+
+    async function getdata(api) {
+        const f_data = new FormData(form);
+        const response = await fetch(api, {
+            method: 'POST',
+            body: f_data
+        });
+        console.log(response);
+        if (response.ok) {
+            alert('Upload successful!');
+            form.reset();
+        } else {
+            alert('Upload failed.');
+        }
+
+        let data = await response.json();
+        console.log(data.body);
+        createExcelStyleTable(data.body.Sheet1);
+        createExcelStyleTable(data.body.Sheet2);
+    }
+    function createExcelStyleTable(sheetData) {
+        const table = document.createElement('table');
+        table.id = 'excelTable';
+        table.className = 'excel-table';
+
+        const thead = document.createElement('thead');
+        const headRow = document.createElement('tr');
+
+        Object.keys(sheetData[0]).forEach(key => {
+            const th = document.createElement('th');
+            th.textContent = sheetData[0][key];
+            th.className = 'excel-header-cell';
+            headRow.appendChild(th);
+        });
+        thead.appendChild(headRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+
+        for (let i = 1; i < sheetData.length; i++) {
+            const row = document.createElement('tr');
+            row.className = 'excel-row';
+
+            Object.keys(sheetData[i]).forEach(key => {
+                const td = document.createElement('td');
+                td.textContent = sheetData[i][key];
+                td.className = 'excel-cell';
+                row.appendChild(td);
+            });
+
+            tbody.appendChild(row);
+        }
+        table.appendChild(tbody);
+        document.getElementById('aside').appendChild(table);
+    }
+</script>
+
+</html>

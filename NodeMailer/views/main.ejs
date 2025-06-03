@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Main</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(46, 46, 46);
+            margin: 0;
+            padding: 5vmin;
+            color: #f0f0f0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header>div {
+            display: flex;
+            gap: 2vmax;
+        }
+
+        h1 {
+            font-size: 4vmin;
+            margin-bottom: 4vmin;
+            text-align: center;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        }
+
+        button {
+            display: block;
+            /* width: 100%; */
+            background-color: #2575fc;
+            font-size: 3.5vmin;
+            border: none;
+            border-radius: 2vmin;
+            padding: 1vmin;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #04637a;
+        }
+
+        .image-container {
+            width: 70vmin;
+            height: 70vmin;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgb(238, 252, 37);
+            transition: box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .image-container:hover {
+            box-shadow: 0 0 30px 8px rgba(255, 255, 255, 0.9);
+        }
+
+
+        ::selection {
+            color: red;
+            background-color: black;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 5vmin 5vmin;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Main Portal</h1>
+        <div>
+            <button>Update Password</button>
+            <button>LogOut</button>
+        </div>
+    </header>
+    <main>
+        <div class="image-container">
+            <img src="https://i.gifer.com/XOsX.gif" alt="Beautiful Landscape" />
+        </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('button')[0].addEventListener('click', () => {
+            console.log('ji')
+            window.location.href = '/update';
+        });
+        document.querySelectorAll('button')[1].addEventListener('click', () => {
+            console.log('ji')
+            window.location.href = '/logout';
+        });
+    </script>
+</body>
+
+</html>
