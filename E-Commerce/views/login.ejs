@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vmin;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 4vmin;
+            margin-bottom: 4vmin;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        form {
+            background-color: #1e1e1e;
+            padding: 5%;
+            width: 60vmin;
+            border-radius: 2vmin;
+            box-shadow: 0 0 4vmin rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 2vmin;
+        }
+
+        .text {
+            font-size: 2vmin;
+            margin-bottom: 0.5vmin;
+            color: #cccccc;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 96%;
+            padding: 1.5vmin;
+            font-size: 2vmin;
+            border: 0.2vmin solid #333;
+            border-radius: 1vmin;
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff;
+            outline: none;
+            background-color: #2e2e2e;
+        }
+
+        ::placeholder {
+            color: #999;
+        }
+
+        button,
+        a.button {
+            padding: 1.5vmin;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 2vmin;
+            font-weight: bold;
+            border: none;
+            border-radius: 1vmin;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        button:hover,
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LOGIN PAGE FOR PORTAL</h1>
+    <form method="post" action="/login">
+        <label for="name" class="text">Enter Email :</label>
+        <input type="email" placeholder="Enter Email" name="email" required>
+
+        <label for="pass" class="text">Enter Password :</label>
+        <input type="password" name="pass" placeholder="e.g=@H21" required>
+
+        <button type="submit">Submit</button>
+        <a href="/signup" class="button">Create New Account</a>
+        <a href="/forget" class="button">Forget Password</a>
+    </form>
+</body>
+
+</html>

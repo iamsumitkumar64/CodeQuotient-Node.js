@@ -1,0 +1,423 @@
+[
+  {
+    "_id": {
+      "$oid": "6840514aef08968dc7a570f2"
+    },
+    "name": "ONE",
+    "email": "iam.sumitkumar64@gmail.com",
+    "password": "1",
+    "product": [
+      {
+        "_id": {
+          "$oid": "64b8f3c9e4b0e5d3a1c2f4a1"
+        },
+        "product_name": "Cotton T-Shirt",
+        "description": "A soft and breathable 100% cotton t-shirt, perfect for casual wear. Available in various colors and sizes.",
+        "price": 299,
+        "imgsrc": "https://i.pinimg.com/736x/f8/45/c2/f845c2c48547148700c4ba1496f17689.jpg",
+        "imgsrc_list": [
+          "https://i.pinimg.com/736x/aa/f6/b5/aaf6b54cf9cacce78403d927f51bbd44.jpg",
+          "https://i.pinimg.com/736x/85/e8/32/85e832a46c94c7f3edcb282e82c0d008.jpg",
+          "https://i.pinimg.com/736x/74/40/34/744034805e5fa74adca37961966e852d.jpg"
+        ],
+        "product_category": "Clothes",
+        "stocks": 47,
+        "buylimit": 5
+      },
+      {
+        "product_name": "Milk Bottle",
+        "description": "A 1-liter organic milk bottle sourced from local farms, rich in calcium and essential nutrients. Perfect for daily consumption, it’s fresh, pure, and free from harmful preservatives.",
+        "price": 65,
+        "imgsrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQooAOWSe1QRa5w6uC2awhBeRqYJsiYuNfYyFLnqAOiEGM8YaWVN_8r4wcCEo1e3aqa8jM&usqp=CAU",
+        "imgsrc_list": [
+          "https://images.unsplash.com/photo-1635436338433-89747d0ca0ef?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWlsayUyMGJvdHRsZXxlbnwwfHwwfHx8MA%3D%3D",
+          "https://images.unsplash.com/photo-1549203477-cba29f1a7c8f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWlsayUyMGJvdHRsZXxlbnwwfHwwfHx8MA%3D%3D",
+          "https://images.unsplash.com/photo-1560848119-ec9255fd285b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWlsayUyMGJvdHRsZXxlbnwwfHwwfHx8MA%3D%3D"
+        ],
+        "_id": {
+          "$oid": "684078d5611b20ba79df026f"
+        },
+        "createdAt": {
+          "$date": "2025-06-04T16:48:21.251Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-04T16:48:21.251Z"
+        },
+        "product_category": "Grocery",
+        "stocks": 3,
+        "buylimit": 2
+      },
+      {
+        "product_name": "Smartphone",
+        "description": "Latest model smartphone with cutting-edge features including high-resolution camera, fast processor, and seamless app performance. Ideal for photography, gaming, communication, and entertainment in a compact sleek design.",
+        "price": 180,
+        "imgsrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTIKgkbAAyHfEGlbLFnPCcBMkGLKO8k3mTCg&s",
+        "imgsrc_list": [
+          "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9iaWxlfGVufDB8fDB8fHww",
+          "https://images.unsplash.com/photo-1529653762956-b0a27278529c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bW9iaWxlfGVufDB8fDB8fHww",
+          "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vYmlsZXxlbnwwfHwwfHx8MA%3D%3D"
+        ],
+        "_id": {
+          "$oid": "683fca673d042e4811838f02"
+        },
+        "createdAt": {
+          "$date": "2025-06-04T04:24:07.321Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-04T04:24:07.321Z"
+        },
+        "product_category": "Electronics",
+        "stocks": 19,
+        "buylimit": 1
+      },
+      {
+        "product_name": "Wireless Mouse",
+        "description": "Ergonomic wireless mouse designed for comfort and precision during long hours of computer use. Features a long battery life, responsive clicks, and smooth tracking on various surfaces effortlessly.",
+        "price": 31,
+        "imgsrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS001XfWULICG6_aUZNEwodTMDRngQkHeiorg&s",
+        "imgsrc_list": [
+          "https://images.unsplash.com/photo-1660491083562-d91a64d6ea9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2lyZWxlc3MlMjBtb3VzZXxlbnwwfHwwfHx8MA%3D%3D",
+          "https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2lyZWxlc3MlMjBtb3VzZXxlbnwwfHwwfHx8MA%3D%3D",
+          "https://images.unsplash.com/photo-1662323861979-0538474387e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8d2lyZWxlc3MlMjBtb3VzZXxlbnwwfHwwfHx8MA%3D%3D"
+        ],
+        "_id": {
+          "$oid": "683fcbfb3d042e4811839015"
+        },
+        "createdAt": {
+          "$date": "2025-06-04T04:30:51.075Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-04T04:30:51.075Z"
+        },
+        "product_category": "Electronics",
+        "stocks": 19,
+        "buylimit": 2
+      },
+      {
+        "_id": {
+          "$oid": "64b8f3c9e4b0e5d3a1c2f4a5"
+        },
+        "product_name": "Wooden Coffee Table",
+        "description": "A sturdy and stylish wooden coffee table with a modern design, perfect for living rooms.",
+        "price": 3499,
+        "imgsrc": "https://i.pinimg.com/736x/8f/41/2e/8f412e3cf0631cd5a8305c542ad3fd36.jpg",
+        "imgsrc_list": [
+          "https://i.pinimg.com/736x/ce/b1/6c/ceb16c955fe312881241919bbf78ba72.jpg",
+          "https://i.pinimg.com/736x/51/ce/d2/51ced2282a45796c62872aae7e5e36b3.jpg",
+          "https://i.pinimg.com/736x/79/2a/c3/792ac36bb6e2e77b1ea084d37e38c1c6.jpg"
+        ],
+        "product_category": "Furniture",
+        "stocks": 19,
+        "buylimit": 1
+      },
+      {
+        "product_name": "Bluetooth Headphones",
+        "description": "Over-ear Bluetooth headphones with premium sound quality, active noise cancellation, and long-lasting battery life. Ideal for music lovers, gamers, or remote workers who demand comfort and superior audio performance.",
+        "price": 59,
+        "imgsrc": "https://cdn.shopify.com/s/files/1/0458/9938/2938/files/BH51_M_Bottom_Banner_-1.jpg?v=1670406808",
+        "imgsrc_list": [
+          "https://plus.unsplash.com/premium_photo-1677158265072-5d15db9e23b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ymx1ZWV0b290aCUyMGhlYWRwaG9uZXxlbnwwfHwwfHx8MA%3D%3D",
+          "https://images.unsplash.com/photo-1566908647301-a693d6eadb85?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ymx1ZWV0b290aCUyMGhlYWRwaG9uZXxlbnwwfHwwfHx8MA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1666739389157-bc1cf25dd78a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Ymx1ZWV0b290aCUyMGhlYWRwaG9uZXxlbnwwfHwwfHx8MA%3D%3D"
+        ],
+        "_id": {
+          "$oid": "683fd0013d042e4811839021"
+        },
+        "createdAt": {
+          "$date": "2025-06-06T10:00:00.000Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-06T10:00:00.000Z"
+        },
+        "product_category": "Electronics",
+        "stocks": 13,
+        "buylimit": 2
+      },
+      {
+        "product_name": "Smart Fitness Band",
+        "description": "Water-resistant fitness band with heart rate monitor, sleep tracking, step counter, and mobile connectivity. Helps you stay on top of your fitness goals with real-time updates and activity reminders.",
+        "price": 39,
+        "imgsrc": "https://styleoxx.com/wp-content/uploads/2025/03/www.STYLEOXX.com-6.png",
+        "imgsrc_list": [
+          "https://images.unsplash.com/photo-1734668486909-4637ecd66408?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c21hcnQlMjBmaXRuZXNzJTIwYmFuZHxlbnwwfHwwfHx8MA%3D%3D",
+          "https://images.unsplash.com/photo-1730998698139-969f90ac8869?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNtYXJ0JTIwZml0bmVzcyUyMGJhbmR8ZW58MHx8MHx8fDA%3D",
+          "https://plus.unsplash.com/premium_photo-1726403421924-eeb265f8c57a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c21hcnQlMjBmaXRuZXNzJTIwYmFuZHxlbnwwfHwwfHx8MA%3D%3D"
+        ],
+        "_id": {
+          "$oid": "683fd0023d042e4811839022"
+        },
+        "createdAt": {
+          "$date": "2025-06-06T10:01:00.000Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-06T10:01:00.000Z"
+        },
+        "product_category": "Electronics",
+        "stocks": 17,
+        "buylimit": 2
+      },
+      {
+        "product_name": "Hydrating Face Serum",
+        "description": "Lightweight, fast-absorbing serum packed with hyaluronic acid and vitamin C. Perfect for all skin types to improve hydration, brightness, and smoothness.",
+        "price": 25,
+        "imgsrc": "https://i.pinimg.com/736x/c3/17/5b/c3175b02d2404e74bd256192e2723004.jpg",
+        "imgsrc_list": [
+          "https://i.pinimg.com/736x/3f/9e/a7/3f9ea70497b8e1eb0099a1f099fbe4e5.jpg",
+          "https://i.pinimg.com/736x/da/55/02/da5502dcb23fa8b9da620a5905118652.jpg",
+          "https://i.pinimg.com/736x/5b/cb/04/5bcb0401fe364de52a15f483a37cbdb9.jpg"
+        ],
+        "_id": {
+          "$oid": "683fca673d042e4811838f07"
+        },
+        "createdAt": {
+          "$date": "2025-06-04T05:20:00.000Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-04T05:20:00.000Z"
+        },
+        "product_category": "Beauty",
+        "stocks": 60,
+        "buylimit": 2
+      },
+      {
+        "product_name": "Ergonomic Office Chair",
+        "description": "Comfortable and adjustable office chair with lumbar support and breathable mesh back. Ideal for long working hours or home office setups.",
+        "price": 140,
+        "imgsrc": "https://i.pinimg.com/736x/a9/c9/4a/a9c94ad67291d1bcedeac7249fc7d57f.jpg",
+        "imgsrc_list": [
+          "https://i.pinimg.com/736x/5d/0f/71/5d0f71ead97fbd083b4ee3a37e109a51.jpg",
+          "https://i.pinimg.com/736x/67/36/11/67361108a328afda07c1167db738c02b.jpg",
+          "https://i.pinimg.com/736x/d0/32/d8/d032d800bba29dc26f6fb3a77867e2ae.jpg"
+        ],
+        "_id": {
+          "$oid": "683fca673d042e4811838f08"
+        },
+        "createdAt": {
+          "$date": "2025-06-04T05:25:00.000Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-04T05:25:00.000Z"
+        },
+        "product_category": "Furniture",
+        "stocks": 15,
+        "buylimit": 1
+      },
+      {
+        "product_name": "Denim Jacket",
+        "description": "Classic unisex denim jacket with button-down front and side pockets. Perfect for layering in all seasons with a timeless look.",
+        "price": 45,
+        "imgsrc": "https://i.pinimg.com/736x/98/a7/c7/98a7c78d9153176d2d583bf5293767ee.jpg",
+        "imgsrc_list": [
+          "https://i.pinimg.com/736x/2d/bf/5d/2dbf5d802bedc23d0a96bbd7cb79ce4a.jpg",
+          "https://i.pinimg.com/736x/bd/07/fd/bd07fd48e4d0ee13e5ca63dff5da8676.jpg",
+          "https://i.pinimg.com/736x/d3/7f/ea/d37fea879e4a92e191e7fa2007699114.jpg"
+        ],
+        "_id": {
+          "$oid": "683fca673d042e4811838f09"
+        },
+        "createdAt": {
+          "$date": "2025-06-04T05:30:00.000Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-04T05:30:00.000Z"
+        },
+        "product_category": "Clothes",
+        "stocks": 40,
+        "buylimit": 2
+      },
+      {
+        "product_name": "Remote Control Car",
+        "description": "Powerful motor with mettalic body for young child to make them innovative with furuistic toys.",
+        "price": 22,
+        "imgsrc": "https://i.pinimg.com/736x/a1/99/b7/a199b7fe49caacf620c2c8e69da288aa.jpg",
+        "imgsrc_list": [
+          "https://i.pinimg.com/736x/45/e9/98/45e99855c60084ba093d32ed866c6cbb.jpg",
+          "https://i.pinimg.com/736x/5b/cf/c4/5bcfc49f1cc913c52b5d62bca17b93d1.jpg",
+          "https://i.pinimg.com/736x/c1/cf/64/c1cf641b1e3816aa7fdb3fc941e8f3ab.jpg"
+        ],
+        "_id": {
+          "$oid": "683fca673d042e4811838f0a"
+        },
+        "createdAt": {
+          "$date": "2025-06-04T05:35:00.000Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-04T05:35:00.000Z"
+        },
+        "product_category": "Toys",
+        "stocks": 68,
+        "buylimit": 3
+      }
+    ],
+    "updatedAt": {
+      "$date": "2025-06-12T09:53:05.670Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6840514aef08968dc7a570f5"
+    },
+    "name": "TWO",
+    "email": "2@gmail.com",
+    "password": "2",
+    "product": [
+      {
+        "_id": {
+          "$oid": "64b8f3c9e4b0e5d3a1c2f4a3"
+        },
+        "product_name": "Building Blocks Set",
+        "description": "A 200-piece set of colorful building blocks to enhance creativity and motor skills in children.",
+        "price": 799,
+        "imgsrc": "https://i.pinimg.com/736x/f2/b5/e1/f2b5e1d03c682bfc0292aa4289cb8dd3.jpg",
+        "imgsrc_list": [
+          "https://i.pinimg.com/736x/1d/f0/ed/1df0edd1326b61d71a1b140864a168e3.jpg",
+          "https://i.pinimg.com/736x/14/59/4b/14594b0ea3c2b44c2c28fe95951d976f.jpg",
+          "https://i.pinimg.com/736x/f5/7f/e1/f57fe13368362f91a1b8fe0cae06c2c1.jpg"
+        ],
+        "product_category": "Toys",
+        "stocks": 91,
+        "buylimit": 10
+      },
+      {
+        "_id": {
+          "$oid": "64b8f3c9e4b0e5d3a1c2f4a4"
+        },
+        "product_name": "Lipstick Set",
+        "description": "A set of 5 vibrant shades of long-lasting lipstick, suitable for all occasions.",
+        "price": 899,
+        "imgsrc": "https://i.pinimg.com/736x/36/d4/4a/36d44a1446575a24e31a31fbab3105a1.jpg",
+        "imgsrc_list": [
+          "https://i.pinimg.com/736x/cf/ae/93/cfae932178f0f30b04f7c667d846938c.jpg",
+          "https://i.pinimg.com/736x/3b/ca/78/3bca789a9de270c0b5eba5702a52d3fc.jpg",
+          "https://i.pinimg.com/736x/38/cc/89/38cc89d3c5293d8a09e95b1512c185cf.jpg"
+        ],
+        "product_category": "Beauty",
+        "stocks": 199,
+        "buylimit": 2
+      },
+      {
+        "_id": {
+          "$oid": "64b8f3c9e4b0e5d3a1c2f4a6"
+        },
+        "product_name": "Running Shoes",
+        "description": "Lightweight and breathable running shoes with excellent grip and comfort.",
+        "price": 1599,
+        "imgsrc": "https://i.pinimg.com/736x/05/b3/a0/05b3a03d5f642be5d3fdfed36889116d.jpg",
+        "imgsrc_list": [
+          "https://i.pinimg.com/736x/ab/b1/e2/abb1e2d4547dbc2cdc270d51665d1e27.jpg",
+          "https://i.pinimg.com/736x/87/b2/aa/87b2aa1f57fd9b2ac6f9e0d01072b385.jpg",
+          "https://i.pinimg.com/736x/a7/7b/60/a77b6034a3e777b1afbbde44adb96288.jpg"
+        ],
+        "product_category": "Shoes",
+        "stocks": 74,
+        "buylimit": 2
+      },
+      {
+        "_id": {
+          "$oid": "64b8f3c9e4b0e5d3a1c2f4a7"
+        },
+        "product_name": "Organic Rice",
+        "description": "Premium quality organic rice, grown without pesticides, ideal for healthy meals.",
+        "price": 120,
+        "imgsrc": "https://i.pinimg.com/736x/79/9e/01/799e0126ed5476e105c62d9585bde56f.jpg",
+        "imgsrc_list": [
+          "https://i.pinimg.com/736x/34/99/ea/3499ea90731f733af9cb38e59487dfe9.jpg",
+          "https://i.pinimg.com/736x/7a/ed/86/7aed86e956a5040f72db12cdcb8df6a9.jpg",
+          "https://i.pinimg.com/736x/4f/33/9d/4f339d025ea1934bfa721e164d06624a.jpg"
+        ],
+        "product_category": "Grocery",
+        "stocks": 499,
+        "buylimit": 10
+      },
+      {
+        "product_name": "USB-C Charging Cable",
+        "description": "Durable USB-C cable with fast charging capabilities and reinforced tips. It ensures reliable power delivery and data transfer, making it essential for modern devices like smartphones, tablets, and laptops.",
+        "price": 12,
+        "imgsrc": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/e5c8db32-9a0a-4171-8eb3-fe9c4880d2a1.__CR0,0,970,600_PT0_SX970_V1___.jpg",
+        "imgsrc_list": [
+          "https://images.unsplash.com/photo-1572721546624-05bf65ad7679?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8VVNCJTIwQyUyMENoYXJnaW5nJTIwQ2FibGV8ZW58MHx8MHx8fDA%3D",
+          "https://images.unsplash.com/photo-1649959223405-f927e0fc1e05?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8VVNCJTIwQyUyMENoYXJnaW5nJTIwQ2FibGV8ZW58MHx8MHx8fDA%3D",
+          "https://images.unsplash.com/photo-1732716286592-996f9e08a296?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8VVNCJTIwQyUyMENoYXJnaW5nJTIwQ2FibGV8ZW58MHx8MHx8fDA%3D"
+        ],
+        "_id": {
+          "$oid": "683fd0043d042e4811839024"
+        },
+        "createdAt": {
+          "$date": "2025-06-06T10:03:00.000Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-06T10:03:00.000Z"
+        },
+        "product_category": "Electronics",
+        "stocks": 16,
+        "buylimit": 3
+      },
+      {
+        "product_name": "Laptop",
+        "description": "A high-performance laptop built for professionals and creators. It offers robust processing power, ample storage, vibrant display, and advanced graphics, perfect for multitasking, coding, or creative design work.",
+        "price": 199,
+        "imgsrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMzTx4EXGAsLKYXCkQwrf8pMyUXGWPArDXfQ&s",
+        "imgsrc_list": [
+          "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fExhcHRvcHxlbnwwfHwwfHx8MA%3D%3D",
+          "https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fExhcHRvcHxlbnwwfHwwfHx8MA%3D%3D",
+          "https://images.unsplash.com/photo-1499914485622-a88fac536970?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8TGFwdG9wfGVufDB8fDB8fHww"
+        ],
+        "_id": {
+          "$oid": "683fca673d042e4811838f01"
+        },
+        "createdAt": {
+          "$date": "2025-06-04T04:24:07.321Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-04T04:24:07.321Z"
+        },
+        "product_category": "Electronics",
+        "stocks": 16,
+        "buylimit": 2
+      },
+      {
+        "product_name": "Running Shoes",
+        "description": "Comfortable and lightweight running shoes designed for daily workouts or casual wear. Provides excellent arch support, breathability, and shock absorption to keep you moving efficiently and stylishly.",
+        "price": 120,
+        "imgsrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkSdjGJDeRW5s_tqA5X_BW3xtjGl5LdbOR9Q&s",
+        "imgsrc_list": [
+          "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2hvZXxlbnwwfHwwfHx8MA%3D%3D",
+          "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXxlbnwwfHwwfHx8MA%3D%3D",
+          "https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNob2V8ZW58MHx8MHx8fDA%3D"
+        ],
+        "_id": {
+          "$oid": "683fca673d042e4811838f10"
+        },
+        "createdAt": {
+          "$date": "2025-06-04T04:24:07.321Z"
+        },
+        "updatedAt": {
+          "$date": "2025-06-04T04:24:07.321Z"
+        },
+        "product_category": "Shoes",
+        "stocks": 12,
+        "buylimit": 2
+      },
+      {
+        "_id": {
+          "$oid": "64b8f3c9e4b1e5d3b1c2f4a3"
+        },
+        "product_name": "Nender Ear Bud",
+        "description": "Earbuds with a dark background can refer to both the visual aesthetic of earbuds on a dark background, or earbuds designed with a dark color scheme, often black. Many images and stock photos feature earbuds, particularly black ones, on dark backgrounds for visual appeal. ",
+        "price": 599,
+        "imgsrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSasTwjRUPYVs3OaLtlxyFhFuOcRqNSFNR7Fg&s",
+        "imgsrc_list": [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOA8yZCn8ZvRkwJypD0TgqeMYCoRWEwaav_Q&s",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdBOOXA0NWOG48Fe4uclvScAzxR3cz0lmQhA&s",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIPY1e_OD8hnr0c2aQDAX_Tx8ymIOSVtUxaw&s"
+        ],
+        "product_category": "Electronics",
+        "stocks": 91,
+        "buylimit": 1
+      }
+    ],
+    "updatedAt": {
+      "$date": "2025-06-12T09:49:23.988Z"
+    }
+  }
+]

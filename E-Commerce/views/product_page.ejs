@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scrollbar-width: none;
+        }
+
+        body {
+            color: #eaeaea;
+            background: #121212;
+            padding: 2vmax;
+            font-weight: 800;
+        }
+
+        body>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1vmax;
+            margin-top: 2vmax;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 2vmax;
+        }
+
+        header h1,
+        h1 {
+            font-size: 2vmax;
+            color: white;
+        }
+
+        button {
+            color: #ffffff;
+            background-color: #525151;
+            cursor: pointer;
+            padding: 0.6vmax 1.2vmax;
+            font-size: 1vmax;
+            font-weight: 600;
+            border-radius: 1vmax;
+            border: none;
+        }
+
+        button:hover {
+            background-color: rgb(255, 255, 255);
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        #product-details {
+            margin-top: 2vmax;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3vmax;
+        }
+
+        .product {
+            background: #1d1d1d;
+            border-radius: 2vmax;
+            overflow: scroll;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2vmax;
+            gap: 2vmax;
+            border: 1px solid white;
+            box-shadow: 0 0 1vmax rgb(163, 65, 0);
+        }
+
+        .product-image {
+            overflow: hidden;
+        }
+
+        .product-image img {
+            /* width: 80vw; */
+            height: 40vh;
+            border-radius: 1vmax;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .product-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2vmax;
+            color: #ffffff;
+        }
+
+        .product-details h2 {
+            font-size: 1.8vmax;
+            color: white;
+        }
+
+        .product-price {
+            font-size: 1.2vmax;
+            color: #00ffd0;
+            font-weight: bold;
+            margin-bottom: 1vmax;
+        }
+
+        .product-details p {
+            font-size: 1vmax;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+
+        .product-gallery {
+            display: flex;
+            gap: 1vmax;
+            flex-wrap: wrap;
+            margin-top: 2vmax;
+            justify-content: center;
+        }
+
+        .product-gallery img {
+            width: 9vmax;
+            height: 9vmax;
+            object-fit: contain;
+            border-radius: 1vmax;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .product-gallery img:hover {
+            transform: scale(1.1);
+            border-color: #ffffff;
+        }
+
+        .similar-products-container {
+            width: 100vw;
+            padding: 1vmax;
+            display: flex;
+            flex-direction: row;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            gap: 2vmax;
+            justify-content: flex-start;
+            background: #1a1a1a;
+            border-radius: 1vmax;
+            scroll-behavior: smooth;
+        }
+
+        .similar-product-card {
+            flex: 0 0 280px;
+            background: #2a2a2a;
+            border-radius: 1.5vmax;
+            box-shadow: 0 0 0.1vmax rgba(255, 140, 0, 0.6);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .similar-product-card:hover {
+            transform: translateY(-3vmin);
+            box-shadow: 0 0 0.6vmax rgba(255, 165, 0, 0.9);
+        }
+
+        .similar-product-image {
+            width: 100%;
+            height: 20vmax;
+            overflow: hidden;
+            border-bottom: 2px solid #ffa500;
+        }
+
+        .similar-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .similar-product-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .similar-product-info {
+            padding: 1.2vmax 1.5vmax;
+            color: #fff;
+            /* flex: 1; */
+            display: flex;
+            flex-direction: column;
+            /* justify-content: space-between; */
+        }
+
+        .similar-product-info h2 {
+            font-size: 1.3vmax;
+            margin-bottom: 0.5vmax;
+            color: #ffa500;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .similar-product-price {
+            font-size: 1.1vmax;
+            font-weight: 800;
+            color: #00ffd0;
+            margin-bottom: 1vmax;
+        }
+
+        .similar-product-description {
+            height: 20vh;
+            max-height: fit-content;
+            font-size: 0.9vmax;
+            line-height: 1.3;
+            color: #ccc;
+            flex-grow: 1;
+            overflow: scroll;
+            text-overflow: ellipsis;
+            border: 1px solid grey;
+            border-radius: 1vmax;
+            padding: .5vmax;
+        }
+
+        #similar-product-details h1 {
+            color: #ffb347;
+            margin-bottom: 1vmax;
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 0 0 6px #ffa500;
+        }
+
+        @media (max-width: 768px) {
+            .frequently-bought-card {
+                width: 90vw;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .product-image,
+            .product-details {
+                max-width: 100%;
+            }
+
+            .product-details h2 {
+                font-size: 1.5vmax;
+            }
+
+
+            .similar-product-card {
+                flex: 0 0 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Product Page</h1>
+        <div>
+            <button id="help-btn">Help@Support</button>
+            <button id="main-btn">Main Page</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </header>
+    <div>
+        <section id="product-details">
+            <div class="product">
+                <div class="product-image">
+                    <img src="<%= product.imgsrc %>" alt="<%= product.product_name %>">
+                </div>
+                <div class="product-details">
+                    <h2>
+                        <%= product.product_name %>
+                    </h2>
+                    <div>
+                        <p class="product-price">Price: $<%= product.price %>
+                        </p>
+                        <p>
+                            <%= product.description %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="product-gallery">
+                <% product.imgsrc_list.forEach(element=> { %>
+                    <img src="<%= element %>" alt="Product Image">
+                    <% }) %>
+            </div>
+        </section>
+    </div>
+    <div>
+        <h1>Same Category Products</h1>
+        <section id="similar-product-details">
+            <% if (!same_category.length) { %>
+                <h1>No Same Category Product Till now</h1>
+                <% } else { %>
+                    <div class="similar-products-container">
+                        <% same_category.forEach(item=> { %>
+                            <div class="similar-product-card">
+                                <div class="similar-product-image">
+                                    <img src="<%= item.imgsrc %>" alt="<%= item.product_name %>"
+                                        onclick="window.location.href = '/product_page?product_id=<%= encodeURIComponent(item._id) %>'">
+                                </div>
+                                <div class="similar-product-info">
+                                    <h2>
+                                        <%= item.product_name %>
+                                    </h2>
+                                    <p class="similar-product-price">Price: $<%= item.price %>
+                                    </p>
+                                    <p class="similar-product-description">
+                                        <%= item.description %>
+                                    </p>
+                                </div>
+                            </div>
+                            <% }); %>
+                    </div>
+                    <% } %>
+        </section>
+    </div>
+    <div>
+        <h1>Frequently Bought</h1>
+        <% if (!together || together.length===0) { %>
+            <h1>No frequently bought products available.</h1>
+            <% } else { %>
+                <div class="similar-products-container">
+                    <% together.forEach(item=> { %>
+                        <div class="similar-product-card">
+                            <div class="similar-product-image">
+                                <img src="<%= item[0].imgsrc %>" alt="<%= item[0].product_name %>"
+                                    onclick="window.location.href = '/product_page?product_id=<%= encodeURIComponent(item[0]._id) %>'">
+                            </div>
+                            <div class="similar-product-info">
+                                <h2>
+                                    <%= item[0].product_name %>
+                                </h2>
+                                <p class="similar-product-price">Price: $<%= item[0].price %>
+                                </p>
+                                <p class="similar-product-description">
+                                    <%= item[0].description %>
+                                </p>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+                <% } %>
+    </div>
+    <script>
+        document.querySelector('#help-btn').addEventListener('click', () => {
+            window.location.href = `/support${window.location.search}&sellerID=<%= sellerID %>&userID=<%= userID %>&role=<%= role %>`;
+        });
+        document.querySelector('#main-btn').addEventListener('click', () => {
+            window.location.href = '/main';
+        });
+        document.querySelector('#logout-btn').addEventListener('click', () => {
+            window.location.href = '/logout';
+        });
+    </script>
+</body>
+
+</html>

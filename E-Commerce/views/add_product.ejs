@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Submission Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: none;
+            font-weight: 900;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            font-size: 1.1vmax;
+            font-weight: 500;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: .5vmax;
+            padding: 1vmax;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 4vmax;
+            margin-bottom: 4vmin;
+            color: #ffffff;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2vmax;
+            margin-top: 3vmin;
+            margin-bottom: 3vmin;
+        }
+
+        .product-box {
+            background-color: #1e1e1e;
+            border-radius: 1.5vmin;
+            width: 18vmax;
+            padding: 1vmax;
+            box-shadow: 0 0 2vmax rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .product-box img {
+            max-width: 100%;
+            border-radius: 1vmin;
+            margin-bottom: 1vmax;
+        }
+
+        .product-name {
+            font-size: 1.4vmax;
+            margin: 0.5vmax 0;
+        }
+
+        .product-price {
+            font-size: 1.2vmax;
+            color: #00ff88;
+        }
+
+        .product-description {
+            height: 14vmin;
+            overflow: scroll;
+            font-size: 0.95vmax;
+            color: #cccccc;
+        }
+
+        form {
+            background-color: #1e1e1e;
+            padding: 1vmax;
+            border-radius: 1.5vmin;
+            width: 60%;
+            max-width: 80vw;
+            margin: 0 auto;
+            font-weight: 900;
+            box-shadow: 0 0 2vmax rgba(0, 0, 0, 0.5);
+        }
+
+        form>div {
+            display: flex;
+            flex-direction: row;
+            /* flex-wrap: wrap; */
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        form>div>div>input {
+            width: 50%;
+            height: 50%;
+        }
+
+        label {
+            display: block;
+            margin-top: 1vmin;
+            margin-bottom: 0.5vmin;
+            color: #cfcfcf;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        input,
+        textarea {
+            width: 95%;
+            padding: 1.5vmin;
+            margin-bottom: 2vmin;
+            border: 0.2vmin solid #444;
+            border-radius: 1vmax;
+            background-color: #383838;
+            color: #ffffff;
+            font-size: 1vmax;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            color: white;
+            background-color: #313131;
+            cursor: pointer;
+            padding: .5vmax;
+            border-radius: 0.5vmin;
+            font-size: 2vmin;
+            font-weight: 900;
+            border-radius: 1vmax;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.2);
+            color: rgb(255, 255, 255);
+            background-color: #00c40a;
+        }
+
+        select,
+        option {
+            background-color: rgb(17, 17, 17);
+            color: white;
+            padding: .5vmax;
+            border-radius: 1.5vmax;
+        }
+
+        #logout-btn:hover {
+            color: white;
+            background-color: rgb(175, 0, 0);
+        }
+
+        .product-box.support-box {
+            background-color: #222;
+            border: 2px solid #00ff88;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Sell your Product</h1>
+        <div>
+            <button class="btn">All Products</button>
+            <button class="btn" id="logout-btn">LogOut</button>
+        </div>
+    </header>
+    <form action="/add_product" method="post" enctype="multipart/form-data">
+        <label for="product">Product Name:</label>
+        <input type="text" id="product" name="product" required>
+
+        <label for="imgsrc">Main Image:</label>
+        <input type="file" id="imgsrc" name="imgsrc" accept=".png,.jpg,.gif,.jpeg">
+
+        <label for="imgsrclist">ShowCase Images:</label>
+        <input type="file" id="imgsrclist" name="imgsrclist" accept=".png,.jpg,.gif,.jpeg" multiple>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="5" required></textarea>
+
+        <div>
+            <div>
+                <label for="category">Category</label>
+                <select name="category" id="category">
+                    <option value="">Select Any One Category</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Toys">Children</option>
+                    <option value="Beauty">Beauty</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Shoes">Shoe</option>
+                    <option value="Grocery">Grocery</option>
+                </select>
+            </div>
+            <div>
+                <label for="stocks">Product Stocks:</label>
+                <input type="number" id="stocks" name="stocks" required>
+            </div>
+            <div> <label for="limit">Product limit on each user:</label>
+                <input type="number" id="limit" name="limit" required>
+            </div>
+        </div>
+
+        <label for="price">Product Price:</label>
+        <input type="text" id="price" name="price" required>
+
+        <button type="submit">Submit</button>
+    </form>
+    <div class="product-container">
+        <% if (product && product.length) { %>
+            <% product.forEach(p=> { %>
+                <div class="product-box" data-id="<%= p._id %>">
+                    <img src="<%= p.imgsrc %>" alt="Product Image">
+                    <div class="product-name">
+                        <%= p.product_name %>
+                    </div>
+                    <div class="product-price">$<%= p.price %>
+                    </div>
+                    <div class="product-description">
+                        <%= p.description %>
+                    </div>
+                    <button class="send-id-btn">Delete Product</button>
+                </div>
+                <% }) %>
+                    <% } else { %>
+                        <p style="text-align: center;">No products available.</p>
+                        <% } %>
+    </div>
+        <section class="product-container">
+            <% if (supportforuser && supportforuser.length) { %>
+                <% supportforuser.forEach(support=> { %>
+                    <div class="product-box support-box" data-productid="<%= support.productID %>" data-buyerid="<%= support.buyerID %>" data-sellerid="<%= support.sellerID %>">
+                        <div class="product-name">Support Ticket</div>
+                        <div><strong>Product ID:</strong>
+                            <%= support.productID %>
+                        </div>
+                        <div><strong>Buyer ID:</strong>
+                            <%= support.buyerID %>
+                        </div>
+                        <div><strong>Seller ID:</strong>
+                            <%= support.sellerID %>
+                        </div>
+                        <div><strong>Resolved:</strong>
+                            <%= support.resolve ? "Yes" : "No" %>
+                        </div>
+                        <button class="resolve-support-btn" data-id="<%= support._id %>">
+                            Resolve
+                        </button>
+                    </div>
+                    <% }) %>
+                        <% } else { %>
+                            <p style="text-align: center;">No support requests.</p>
+                            <% } %>
+        </section>
+        <script>
+            document.querySelectorAll('.btn')[0].addEventListener('click', () => {
+                window.location.href = '/main';
+            });
+            document.querySelectorAll('.btn')[1].addEventListener('click', () => {
+                window.location.href = '/logout';
+            });
+
+            document.querySelectorAll('.product-box').forEach(box => {
+                box.addEventListener('click', function (e) {
+                    const productId = box.dataset.productid;
+                    if (e.target.tagName === 'BUTTON') {
+                        window.location.href = `/delete_product?product_id=${encodeURIComponent(productId)}`;
+                    } else  {
+                        const sellerID = box.dataset.sellerid;
+                        const userID = box.dataset.buyerid;
+                        console.log(sellerID)
+                        console.log(userID)
+                        window.location.href = `/support?product_id=${productId}&sellerID=${sellerID}&userID=${userID}&role=seller`;
+                    }
+                });
+            });
+        </script>
+</body>
+
+</html>

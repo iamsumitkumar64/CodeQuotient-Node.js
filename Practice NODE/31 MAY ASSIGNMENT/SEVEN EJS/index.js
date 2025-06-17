@@ -1,6 +1,6 @@
-const express = require('express')
-const exp = express()
-const Port = 8000
+const express = require('express');
+const exp = express();
+const Port = 8000;
 const cookieParser = require('cookie-parser');
 
 const loginRouter = require('./routes/login')

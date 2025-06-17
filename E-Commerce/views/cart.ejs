@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Cart</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: all 0.5s ease;
+            font-family: Arial, sans-serif;
+            scrollbar-width: none;
+        }
+
+        body {
+            color: white;
+            background: #1f1f1f;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3vmax;
+        }
+
+        header>h1 {
+            font-size: 3vmin;
+            padding: 1vmax;
+            border-radius: 1vmax;
+            background: transparent;
+            border: 1px solid white;
+            transition: all 1s ease;
+        }
+
+        header>h1:hover {
+            transform: rotateX(180deg) translate(30%);
+        }
+
+        button {
+            color: white;
+            background-color: #313131;
+            cursor: pointer;
+            padding: .5vmax;
+            font-size: 1vmax;
+            font-weight: 900;
+            border-radius: 1vmax;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        button:hover {
+            transform: scale(1.2);
+            color: rgb(255, 243, 243);
+            background-color: #00ad17;
+        }
+
+        #logout-btn:hover {
+            color: white;
+            background-color: rgb(175, 0, 0);
+        }
+
+        .buy-remove {
+            padding: 0.5vmax;
+        }
+
+        #product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2vmin;
+            margin-top: 2vmax;
+            margin-bottom: 10%;
+        }
+
+        .product {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2vmin;
+            background-color: #4a4a4a;
+            padding: 2vmin;
+            border-radius: 1vmax;
+            box-shadow: 0 0 1vmin rgba(255, 255, 255);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product img {
+            width: 15vmin;
+            height: 15vmin;
+            object-fit: contain;
+            border-radius: 90%;
+        }
+
+        .product-info {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 1vmin;
+        }
+
+        .product-info h2 {
+            font-size: 2.5vmin;
+        }
+
+        .product-info p {
+            font-size: 3vmin;
+            color: #e0e0e0;
+        }
+
+        .product:hover p,
+        h2,
+        .product:active p,
+        h2 {
+            font-size: 4vmin;
+            font-weight: 500;
+        }
+
+        .product-actions {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1vmin;
+        }
+
+        .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1vmin;
+        }
+
+        .quantity-input {
+            width: 3vmax;
+            height: 3vmax;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: 300;
+            border: none;
+        }
+
+        .product-hover {
+            position: absolute;
+            top: 0;
+            left: 40%;
+            width: 30%;
+            height: 100%;
+            background-color: rgba(30, 30, 30, 0.95);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2vmin;
+            font-size: 2vmin;
+            border-radius: 2vmin;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            text-align: center;
+        }
+
+        .product:hover .product-hover {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .c_r_div {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2vmax;
+        }
+
+        input[type='checkbox'] {
+            width: 2vmax;
+            height: 2vmax;
+            cursor: pointer;
+        }
+
+        footer {
+            width: 100vw;
+            background-color: rgb(105, 105, 105);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            padding: 1vmax;
+        }
+
+        footer>div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2vmax;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Your Cart</h1>
+        <div>
+            <button id="receipt-btn">Receipts</button>
+            <button id="main-btn">Main Page</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </header>
+    <section id="product-list"></section>
+    <footer>
+        <h2>Check-Out your choice</h2>
+        <div>
+            <h2 id="total-price">Total Price: $0</h2>
+            <button id="buy-all-btn">Buy Selected Products</button>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('#main-btn').addEventListener('click', () => {
+            window.location.href = '/main';
+        });
+        document.querySelector('#receipt-btn').addEventListener('click', () => {
+            window.location.href = '/receipt';
+        });
+        document.querySelector('#logout-btn').addEventListener('click', () => {
+            window.location.href = '/logout';
+        });
+        document.getElementById('product-list').addEventListener('click', function (event) {
+            clcked_product(event);
+        });
+        window.addEventListener('DOMContentLoaded', fetchProducts);
+
+        function clcked_product(event) {
+            const productDiv = event.target.closest('.product');
+            if (!productDiv) return;
+            const productId = productDiv.dataset.id;
+            if (event.target.tagName === 'IMG') {
+                window.location.href = `/product_page?product_id=${encodeURIComponent(productId)}`;
+            }
+        }
+        function createCheckbox(id) {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'product-checkbox';
+            checkbox.dataset.id = id;
+            return checkbox;
+        }
+        async function fetchProducts() {
+            try {
+
+
+                const localData = JSON.parse(localStorage.getItem('LocalCart')) || [];
+
+                let response = await fetch('/api/showcart', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        localData
+                    })
+                })
+                const result = await response.json();
+                console.log(result);
+                let data = result.cart;
+                const list = document.getElementById('product-list');
+                list.innerHTML = '';
+                if (result.clearLocalStorage) {
+                    localStorage.removeItem('LocalCart');
+                }
+                data.forEach(item => {
+                    const productItem = document.createElement('div');
+                    productItem.className = 'product';
+                    productItem.dataset.id = item._id;
+
+                    const img = document.createElement('img');
+                    img.src = item.imgsrc;
+                    img.alt = item.description;
+
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'product-info';
+
+                    const title = document.createElement('h2');
+                    title.textContent = item.product_name;
+
+                    const price = document.createElement('p');
+                    price.textContent = `Price: $${item.price}`;
+
+                    infoDiv.appendChild(title);
+                    infoDiv.appendChild(price);
+
+                    const quantDiv = document.createElement('div');
+                    quantDiv.className = 'quantity-controls';
+
+                    const minusBtn = document.createElement('button');
+                    minusBtn.textContent = '-';
+
+                    const quantBox = document.createElement('input');
+                    quantBox.type = 'text';
+                    quantBox.value = item.quantity;
+                    quantBox.readOnly = true;
+                    quantBox.className = 'quantity-input';
+
+                    const plusBtn = document.createElement('button');
+                    plusBtn.textContent = '+';
+
+                    minusBtn.addEventListener('click', () => {
+                        let currentQty = parseInt(quantBox.value);
+                        if (currentQty > 1) {
+                            let newQty = currentQty - 1;
+                            quantBox.value = newQty;
+                            updateQuantity(item._id, newQty);
+                            calculateTotalPrice();
+                        }
+                    });
+
+                    plusBtn.addEventListener('click', () => {
+                        let currentQty = parseInt(quantBox.value);
+                        let newQty = currentQty + 1;
+                        quantBox.value = newQty;
+                        updateQuantity(item._id, newQty);
+                        calculateTotalPrice();
+                    });
+
+                    quantDiv.appendChild(minusBtn);
+                    quantDiv.appendChild(quantBox);
+                    quantDiv.appendChild(plusBtn);
+
+                    const c_r_div = document.createElement('div');
+                    c_r_div.className = 'c_r_div';
+
+                    const actionsDiv = document.createElement('div');
+                    actionsDiv.className = 'product-actions';
+
+                    const checkbox = createCheckbox(item._id);
+
+                    const removeBtn = document.createElement('button');
+                    removeBtn.textContent = 'Remove from Cart';
+                    removeBtn.className = 'buy-remove';
+
+                    removeBtn.addEventListener('click', () => {
+                        fetch('/api/deletecart', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ id: item._id }),
+                        })
+                            .then(async res => await res.json())
+                            .then(msg => {
+                                if (msg.Error == 'Unauthorized') {
+                                    let localData = JSON.parse(localStorage.getItem('LocalCart'));
+                                    localData = localData.filter(ele => ele.product_id != item._id);
+                                    localStorage.setItem('LocalCart', JSON.stringify(localData));
+                                }
+                                productItem.remove();
+                                calculateTotalPrice();
+                            })
+                            .catch(err => console.error('Error:', err));
+                    });
+
+                    c_r_div.appendChild(checkbox);
+                    c_r_div.appendChild(removeBtn);
+                    actionsDiv.appendChild(quantDiv);
+                    actionsDiv.appendChild(c_r_div);
+
+                    const hoverOverlay = document.createElement('div');
+                    hoverOverlay.className = 'product-hover';
+                    hoverOverlay.textContent = item.description;
+
+                    productItem.appendChild(img);
+                    productItem.appendChild(infoDiv);
+                    productItem.appendChild(actionsDiv);
+                    productItem.appendChild(hoverOverlay);
+
+                    list.appendChild(productItem);
+                });
+                calculateTotalPrice();
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        }
+        function updateQuantity(id, quantity) {
+            fetch('/api/quantcart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: id, quantvalue: quantity }),
+            })
+                .then(async res => await res.json())
+                .then(msg => {
+                    if (msg.Error == 'Unauthorized') {
+                        let localData = JSON.parse(localStorage.getItem('LocalCart'));
+                        localData = localData.map(product => {
+                            if (product.product_id === id) {
+                                return { ...product, quantity: quantity };
+                            }
+                            return product;
+                        });
+                        localStorage.setItem('LocalCart', JSON.stringify(localData));
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        function calculateTotalPrice() {
+            const selectedProducts = document.querySelectorAll('.product-checkbox:checked');
+            let total = 0;
+            selectedProducts.forEach(checkbox => {
+                const product = checkbox.closest('.product');
+                const priceText = product.querySelector('.product-info p').textContent;
+                const price = parseFloat(priceText.replace('Price: $', ''));
+                const quantity = parseInt(product.querySelector('.quantity-input').value);
+                total += price * quantity;
+            });
+            document.getElementById('total-price').textContent = `Total Price: $${total.toFixed(2)}`;
+        }
+        document.getElementById('buy-all-btn').addEventListener('click', () => {
+            const checkboxes = document.querySelectorAll('.product-checkbox:checked');
+            const selectedIds = Array.from(checkboxes).map(cb => cb.dataset.id);
+            console.log(selectedIds)
+            if (selectedIds.length === 0) {
+                alert('Please select a product!');
+                return;
+            }
+            fetch('/api/checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ids: selectedIds }),
+            })
+                .then(res => res.json())
+                .then(msg => {
+                    console.log(msg)
+                    if (msg.Exceeded == 'High Limit') {
+                        alert(`Lower Quantity ${msg.product}`);
+                    } else {
+                        window.location.href = '/checkout';
+                    }
+                })
+                .catch(err => console.error('Checkout error:', err));
+        });
+        document.addEventListener('change', (e) => {
+            if (e.target.classList.contains('product-checkbox')) {
+                calculateTotalPrice();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+[
+  {
+    "_id": {
+      "$oid": "6845a2e3f4e77381aea331d8"
+    },
+    "name": "ONE",
+    "email": "iam.sumitkumar64@gmail.com",
+    "password": "1",
+    "cart": [],
+    "updatedAt": {
+      "$date": "2025-06-14T07:20:26.022Z"
+    },
+    "__v": 17,
+    "role": "seller"
+  },
+  {
+    "_id": {
+      "$oid": "6845a2e3f4e77381aea331d9"
+    },
+    "name": "TWO",
+    "email": "2@gmail.com",
+    "password": "2",
+    "__v": 7,
+    "cart": [
+      {
+        "product_id": {
+          "$oid": "683fca673d042e4811838f0a"
+        },
+        "quantity": 1,
+        "_id": {
+          "$oid": "684aa2cbfbb883e885f0e462"
+        }
+      },
+      {
+        "product_id": {
+          "$oid": "64b8f3c9e4b0e5d3a1c2f4a1"
+        },
+        "quantity": 1,
+        "_id": {
+          "$oid": "684aa2ecfbb883e885f0e4fe"
+        }
+      },
+      {
+        "product_id": {
+          "$oid": "683fca673d042e4811838f02"
+        },
+        "quantity": 1,
+        "_id": {
+          "$oid": "684aa3791a77e03a1ae1200a"
+        }
+      },
+      {
+        "product_id": {
+          "$oid": "64b8f3c9e4b0e5d3a1c2f4a5"
+        },
+        "quantity": 1,
+        "_id": {
+          "$oid": "684aa37a1a77e03a1ae12033"
+        }
+      }
+    ],
+    "updatedAt": {
+      "$date": "2025-06-12T09:52:58.831Z"
+    },
+    "role": "seller"
+  },
+  {
+    "_id": {
+      "$oid": "684d2e6dc1e1fd944c405aea"
+    },
+    "name": "THREE",
+    "email": "1@gmail.com",
+    "password": "1",
+    "role": "buyer",
+    "cart": [],
+    "createdAt": {
+      "$date": "2025-06-14T08:10:21.477Z"
+    },
+    "updatedAt": {
+      "$date": "2025-06-14T08:10:21.477Z"
+    },
+    "__v": 0
+  }
+]

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simple E-commerce</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: all 0.5s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scrollbar-width: none;
+            font-weight: 600;
+        }
+
+        body {
+            color: #e0e0e0;
+            background: #292929;
+            padding: 1.5vmax;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1vmax;
+            padding-bottom: 1vmax;
+            border-bottom: 1px solid #333;
+        }
+
+        header>h1 {
+            font-size: 3.5vmin;
+            padding: 1vmax 1.5vmax;
+            border-radius: 1vmax;
+            background: #2a2a2a;
+            border: 1px solid #555;
+            color: #ffffff;
+            /* A vibrant blue for the logo */
+        }
+
+        header>h1:hover {
+            transform: rotateX(40deg) rotateY(40deg) translate(10%);
+        }
+
+        #user_name {
+            font-size: 1.8vmax;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 1vmin;
+        }
+
+        #user_name img {
+            width: 8vmin;
+            height: 8vmin;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        #user_name p {
+            font-size: 2.5vmax;
+            color: #ffee07;
+            /* A warm yellow for the username */
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            gap: 1.5vmax;
+            margin-bottom: 1vmax;
+            flex-wrap: wrap;
+        }
+
+        button {
+            color: white;
+            background-color: #383838;
+            cursor: pointer;
+            padding: 0.8vmax 1.5vmax;
+            font-size: 2.2vmin;
+            font-weight: 700;
+            border-radius: 0.8vmax;
+            border: none;
+            box-shadow: 0 0.5vmin 1vmin rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-0.3vmax);
+            background-color: #4CAF50;
+            /* Green for general buttons */
+            box-shadow: 0 0.8vmin 1.5vmin rgba(76, 175, 80, 0.4);
+        }
+
+        #logout-btn:hover {
+            background-color: #f44336;
+            /* Red for logout */
+            box-shadow: 0 0.8vmin 1.5vmin rgba(244, 67, 54, 0.4);
+        }
+
+        #None {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            color: #ffffff;
+            background-color: #003d66;
+            /* Blue for "Products on the Way" */
+        }
+
+        #None:hover {
+            background-color: #006d49;
+            transform: scale(1.02);
+        }
+
+        /* Image Slider */
+        .image-slider {
+            width: fit-content;
+            height: 20vmax;
+            /* Increased height for better visual impact */
+            margin: auto;
+            overflow: hidden;
+            border-radius: 1vmax;
+            margin-bottom: 1vmax;
+            position: relative;
+            box-shadow: 0 0 3vmax rgba(0, 0, 0, 0.5);
+        }
+
+        .image-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+            /* Hide all by default, managed by JS */
+        }
+
+        .image-slider img.active {
+            display: block;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 2vmax;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1vmax;
+        }
+
+        .dot {
+            width: 1.5vmax;
+            height: 1.5vmax;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #fff;
+        }
+
+        /* Product List */
+        #product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(28vmax, 1fr));
+            /* Larger product cards */
+            gap: 3.5vmin;
+            justify-content: center;
+            margin-top: 2vmax;
+        }
+
+        .product {
+            background-color: #1e1e1e;
+            padding: 1vmin;
+            border-radius: 2vmax;
+            box-shadow: 0 0 2vmin rgba(0, 0, 0, 0.4);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .product:hover {
+            transform: translateY(-0.5vmax);
+            box-shadow: 0 1vmin 3vmin rgba(0, 0, 0, 0.6);
+        }
+
+        .product img {
+            width: 95%;
+            height: 20vmax;
+            /* Fixed height for consistent image size */
+            margin: 0 auto 2vmin auto;
+            border-radius: 1.5vmax;
+            object-fit: contain;
+            /* Ensures the entire image is visible */
+            box-shadow: 0 0 1.5vmax rgba(0, 0, 0, 0.3);
+            display: block;
+            /* To center with margin auto */
+        }
+
+        .product:hover img {
+            transform: scale(1.03);
+        }
+
+        .product h2 {
+            font-size: 3vmin;
+            margin-bottom: 1.5vmin;
+            color: #00bcd4;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .product p {
+            font-size: 2.2vmin;
+            color: #bbbbbb;
+            margin-bottom: 1vmax;
+        }
+
+        .p_desc {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 65%;
+            /* Covers the image area plus a bit of title */
+            background-color: rgba(30, 30, 30, 0.95);
+            color: #ffffff;
+            display: flex;
+            /* Changed to flex to center content */
+            justify-content: center;
+            align-items: center;
+            padding: 3vmin;
+            font-size: 1.8vmin;
+            border-radius: 2vmax;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            text-align: center;
+            overflow: auto;
+            /* Changed from scroll to auto */
+            line-height: 1.5;
+            z-index: 1;
+            /* Ensure it's above other elements */
+        }
+
+        .product:hover .p_desc {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Quantity Controls */
+        .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.2vmin;
+            margin-top: 1.5vmax;
+            margin-bottom: 1.5vmax;
+        }
+
+        .quantity-btn {
+            padding: 0.8vmax 1.5vmax;
+            font-size: 2.2vmin;
+            background-color: #313131;
+            color: #e0e0e0;
+            border-radius: 0.5vmax;
+        }
+
+        .quantity-btn:hover {
+            background-color: #4CAF50;
+        }
+
+        .quantity-input {
+            width: 5vmax;
+            text-align: center;
+            font-size: 1.8vmin;
+            font-weight: 900;
+            color: #ffeb3b;
+            /* Yellow for quantity input */
+            background-color: #2a2a2a;
+            border: 1px solid #555;
+            border-radius: 0.5vmax;
+            padding: 0.5vmax;
+        }
+
+        /* Cart and Buy Buttons */
+        .cart-buy {
+            display: flex;
+            justify-content: space-around;
+            gap: 1vmax;
+            margin-top: 2vmax;
+        }
+
+        .cart-buy button {
+            flex-grow: 1;
+            padding: 1vmax;
+            font-size: 2vmin;
+        }
+
+        .cart-buy button:first-child {
+            background-color: #FFC107;
+            /* Amber for Add to Cart */
+            color: #121212;
+        }
+
+        .cart-buy button:first-child:hover {
+            background-color: #ffa000;
+            color: white;
+        }
+
+        .cart-buy button:last-child {
+            background-color: #00bcd4;
+            /* Cyan for Buy Product */
+            color: #121212;
+        }
+
+        .cart-buy button:last-child:hover {
+            background-color: #0097a7;
+            color: white;
+        }
+
+        .product>button {
+            /* Max Buy Limit button */
+            width: 90%;
+            margin: 1.5vmax auto 0 auto;
+            background-color: #3f51b5;
+            /* Indigo for limit button */
+            color: white;
+            font-size: 1.8vmin;
+            padding: 0.8vmax;
+        }
+
+        .product>button:hover {
+            background-color: #303f9f;
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            font-size: 1.8vmax;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 2vmax;
+            margin-top: 3vmax;
+            padding-top: 3vmax;
+            border-top: 1px solid #333;
+            color: #9e9e9e;
+        }
+
+        footer p {
+            font-size: 1.5vmax;
+            color: #757575;
+        }
+
+        /* Aside (Login/Signup Buttons) */
+        aside {
+            position: fixed;
+            bottom: 1vmax;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1vmax;
+        }
+
+        aside>button {
+            color: #121212;
+            background-color: #dce91e;
+            /* Pink for login/signup */
+            font-weight: 700;
+            padding: 1vmax 2vmax;
+            border-radius: 1vmax;
+        }
+
+        aside>button:hover {
+            background-color: #ffd900;
+            transform: scale(1.05);
+            box-shadow: 0 0.5vmin 1.5vmin rgba(255, 255, 255, 0.918);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 2vmax;
+            }
+
+            header>h1 {
+                font-size: 4vmin;
+            }
+
+            #user_name {
+                font-size: 2.5vmax;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 1vmax;
+            }
+
+            button {
+                padding: 1vmax;
+                font-size: 2.5vmin;
+                width: 100%;
+            }
+
+            .image-slider {
+                height: 30vmax;
+            }
+
+            #product-list {
+                grid-template-columns: repeat(auto-fit, minmax(40vmax, 1fr));
+            }
+
+            .product img {
+                height: 20vmax;
+            }
+
+            .product h2 {
+                font-size: 4vmin;
+            }
+
+            .product p {
+                font-size: 3vmin;
+            }
+
+            .quantity-input {
+                width: 8vmax;
+                font-size: 2.5vmin;
+            }
+
+            .quantity-btn {
+                padding: 0.8vmax 1.2vmax;
+                font-size: 2.5vmin;
+            }
+
+            .cart-buy button {
+                padding: 1.2vmax;
+                font-size: 2.5vmin;
+            }
+
+            .product>button {
+                font-size: 2.2vmin;
+                padding: 1vmax;
+            }
+
+            footer {
+                font-size: 2vmax;
+            }
+
+            aside {
+                bottom: 1vmax;
+                right: 1vmax;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 2vmax;
+            }
+
+            header>h1 {
+                font-size: 5vmin;
+            }
+
+            #user_name {
+                font-size: 3vmax;
+            }
+
+            .image-slider {
+                height: 25vmax;
+            }
+
+            #product-list {
+                grid-template-columns: 1fr;
+                /* Single column on very small screens */
+            }
+
+            .product img {
+                height: 18vmax;
+            }
+
+            .product h2 {
+                font-size: 5vmin;
+            }
+
+            .product p {
+                font-size: 3.5vmin;
+            }
+
+            .p_desc {
+                font-size: 2vmin;
+            }
+
+            .quantity-input {
+                width: 10vmax;
+            }
+
+            .quantity-btn {
+                padding: 1vmax 1.5vmax;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>𝐵𝐼𝓇𝓌𝒶𝓁 𝒦𝒶𝓇𝓉</h1>
+        <span id="user_name"></span>
+    </header>
+
+    <div class="nav-buttons">
+        <button id="receipt-btn">Receipts</button>
+        <button id="sell-btn">Sell Product</button>
+        <button id="cart-btn">Cart Product</button>
+        <button id="logout-btn">Logout</button>
+    </div>
+
+    <section class="image-slider">
+        <img src="https://pbs.twimg.com/media/E0p7Z_uXoAAP-X2.jpg:large" alt="Slider Image 1" class="active">
+        <img src="https://img.freepik.com/free-psd/black-friday-super-sale-facebook-cover-banner-template_120329-5177.jpg?semt=ais_hybrid&w=740"
+            alt="Slider Image 2">
+        <img src="https://graphicsfamily.com/wp-content/uploads/edd/2022/06/Free-E-commerce-Product-Banner-Design-with-Green-Colors-scaled.jpg"
+            alt="Slider Image 3">
+        <img src="https://www.shutterstock.com/image-photo/motala-sweden-7-september-2008-260nw-2389535595.jpg"
+            alt="Slider Image 4">
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+        </div>
+    </section>
+
+    <section id="product-list">
+    </section>
+
+    <footer>
+        <button id="None">Click or scroll (Products on the Way)</button>
+        <p>BIrwal All @ CopyRight's Reserved 2025</p>
+    </footer>
+
+    <aside>
+        <button id="login-btn">LOG IN</button>
+        <button id="sign-btn">SIGN UP</button>
+    </aside>
+
+    <script>
+        let p1 = 0, flag = 1, isFetching = false;
+
+        // Image Slider JavaScript
+        const sliderImages = document.querySelectorAll('.image-slider img');
+        const sliderDots = document.querySelectorAll('.slider-dots .dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            sliderImages.forEach((img, i) => {
+                img.classList.remove('active');
+                sliderDots[i].classList.remove('active');
+            });
+            sliderImages[index].classList.add('active');
+            sliderDots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % sliderImages.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance slider every 5 seconds
+        setInterval(nextSlide, 2000);
+
+        // Dot navigation
+        sliderDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const slideIndex = parseInt(dot.dataset.slide);
+                currentSlide = slideIndex;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Initial slide display
+        showSlide(currentSlide);
+
+        document.querySelector('#sell-btn').addEventListener('click', () => {
+            window.location.href = '/add_product';
+        });
+        document.querySelector('#receipt-btn').addEventListener('click', () => {
+            window.location.href = '/receipt';
+        });
+        document.querySelector('#cart-btn').addEventListener('click', () => {
+            window.location.href = '/cart_page';
+        });
+        document.querySelector('#logout-btn').addEventListener('click', () => {
+            window.location.href = '/logout';
+        });
+        document.querySelector('#login-btn').addEventListener('click', () => {
+            window.location.href = '/login';
+        });
+        document.querySelector('#sign-btn').addEventListener('click', () => {
+            window.location.href = '/signup';
+        });
+        document.getElementById('product-list').addEventListener('click', function (event) {
+            cart_product(event);
+        });
+        document.querySelector('#None').addEventListener('click', () => {
+            fetchProducts(p1)
+        });
+        window.addEventListener('DOMContentLoaded', () => fetchProducts(p1));
+        window.addEventListener('scroll', scrollHandler);
+
+        async function fetchProducts(start) {
+            if (isFetching) return;
+            isFetching = true;
+            try {
+                const response = await fetch(`/api/main/${start}`);
+                const data = await response.json();
+                if (data === 'No data') {
+                    flag = 0;
+                    document.getElementById('None').setAttribute('style', 'color:white;background-color:rgb(175, 0, 0)');
+                    document.getElementById('None').innerHTML = 'NO Data Left on Server';
+                    return;
+                }
+                console.log(data);
+                document.getElementById('user_name').innerHTML = `<img src="https://cdn.pixabay.com/animation/2024/10/27/12/15/12-15-03-411_512.gif" alt="miss" loading="lazy">Welcome , <p>${data[0].user_name}</p>`;
+                if (data[0].user_name != 'Ghost') {
+                    document.getElementById('user_name').innerHTML = `<img src="https://cdn.pixabay.com/animation/2022/12/05/10/47/10-47-58-930_512.gif" alt="miss" loading="lazy">Welcome , <p>${data[0].user_name}</p>`;
+                    document.querySelector('aside').setAttribute('style', 'display:none');
+                }
+                showdata(data);
+                p1 += 4;
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            } finally {
+                isFetching = false;
+            }
+        }
+
+        function scrollHandler() {
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.body.offsetHeight;
+            if (scrollTop + windowHeight >= documentHeight - 100 && flag === 1 && !isFetching) {
+                fetchProducts(p1);
+            }
+        }
+
+        function cart_product(event) {
+            const productDiv = event.target.closest('.product');
+            if (!productDiv) return;
+            const productId = productDiv.dataset.id;
+            const quantityInput = productDiv.querySelector('.quantity-input');
+            const quantity = parseInt(quantityInput.value);
+            if (event.target.tagName === 'BUTTON' && event.target.textContent === 'Add to Cart') {
+                fetch('/api/addcart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ product_id: productId, quant_value: quantity }),
+                })
+                    .then(async data => {
+                        const msg = await data.json();
+                        console.log('Success:', msg);
+                        if (msg.Message == 'Unauthorized') {
+                            let arr = JSON.parse(localStorage.getItem('LocalCart')) || [];
+                            const existingProductIndex = arr.findIndex(item => item.product_id === productId);
+                            if (existingProductIndex > -1) {
+                                arr[existingProductIndex].quantity = quantity;
+                            } else {
+                                const obj = { 'product_id': productId, 'quantity': quantity };
+                                arr.push(obj);
+                            }
+                            localStorage.setItem('LocalCart', JSON.stringify(arr));
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+            else if (event.target.tagName === 'IMG' || event.target.tagName === 'P') {
+                window.location.href = `/product_page?product_id=${encodeURIComponent(productId)}`;
+            }
+        }
+
+        function showdata(data) {
+            const list = document.getElementById('product-list');
+            data.forEach(item => {
+                const productItem = document.createElement('div');
+                productItem.className = 'product';
+                productItem.dataset.id = item._id;
+
+                const img = document.createElement('img');
+                img.src = `${item.imgsrc}`;
+                img.alt = item.product_name;
+
+                const title = document.createElement('h2');
+                title.textContent = item.name;
+
+                const price = document.createElement('p');
+                price.textContent = `Price: $${item.price}`;
+
+                const quantityDiv = document.createElement('div');
+                quantityDiv.className = 'quantity-controls';
+
+                const minusBtn = document.createElement('button');
+                minusBtn.className = 'quantity-btn';
+                minusBtn.textContent = '-';
+                const quantityInput = document.createElement('input');
+                quantityInput.className = 'quantity-input';
+                quantityInput.value = item.quantity;
+                quantityInput.disabled = true;
+                const plusBtn = document.createElement('button');
+                plusBtn.className = 'quantity-btn';
+                plusBtn.textContent = '+';
+
+                plusBtn.addEventListener('click', () => {
+                    let currentQty = parseInt(quantityInput.value);
+                    let newQty = currentQty + 1;
+                    quantityInput.value = newQty;
+                });
+
+                minusBtn.addEventListener('click', () => {
+                    let currentQty = parseInt(quantityInput.value);
+                    let newQty = currentQty - 1;
+                    if (newQty > 0) {
+                        quantityInput.value = newQty;
+                    }
+                });
+
+                quantityDiv.appendChild(minusBtn);
+                quantityDiv.appendChild(quantityInput);
+                quantityDiv.appendChild(plusBtn);
+
+                const btns = document.createElement('div');
+                btns.className = 'cart-buy';
+                const btn = document.createElement('button');
+                btn.textContent = 'Add to Cart';
+                const buy = document.createElement('button');
+                buy.textContent = 'Buy Product';
+                buy.addEventListener('click', (event) => {
+                    const productDiv = event.target.closest('.product');
+                    const productId = productItem.dataset.id;
+                    if (!productDiv) return;
+                    const quantityInput = productDiv.querySelector('.quantity-input');
+                    const quantity = parseInt(quantityInput.value);
+                    console.log(productId, quantity)
+                    fetch('/api/onecheckout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ ids: [productId], quant_value: quantity }),
+                    })
+                        .then(async res => {
+                            if (!res.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return await res.json();
+                        })
+                        .then(msg => {
+                            if (msg.Exceeded == 'High Limit') {
+                                alert('Lower Your Limit');
+                            } else {
+                                window.location.href = '/checkout';
+                            }
+                        })
+                        .catch((err) => {
+                            console.error('Checkout error:', err);
+                        });
+                });
+
+                const p_description = document.createElement('p');
+                p_description.className = 'p_desc';
+                p_description.textContent = item.description;
+
+                let limit = document.createElement('button');
+                limit.innerText = `Max Buy Limit : ${item.Limit}`;
+
+                productItem.appendChild(img);
+                productItem.appendChild(title);
+                productItem.appendChild(price);
+                productItem.appendChild(quantityDiv);
+                btns.appendChild(btn);
+                btns.appendChild(buy);
+                productItem.appendChild(btns);
+                productItem.appendChild(p_description);
+                productItem.appendChild(limit);
+
+                list.appendChild(productItem);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

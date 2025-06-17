@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding-bottom: 3rem;
+            background-color: #333;
+            font-weight: 900;
+            font-size: 2vmax;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        #form {
+            background: rgb(0, 81, 92);
+            padding: 0.25rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+
+        #input {
+            border: none;
+            padding: 0 1rem;
+            flex-grow: 1;
+            border-radius: 2rem;
+            margin: 0.25rem;
+        }
+
+        button {
+            background: #333;
+            border: none;
+            padding: 0 1rem;
+            margin: 0.25rem;
+            border-radius: 3px;
+            outline: none;
+            color: #fff;
+            font-size: 2vmax;
+            font-weight: 900;
+        }
+
+        button:hover {
+            color: #333;
+            background-color: #efefef;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #messages>li {
+            padding: 0.5rem 1rem;
+        }
+
+        #controls {
+            padding: 0.5rem 1rem;
+        }
+
+        #user-select {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Socket.IO Chat</p>
+    <div id="controls">
+        <label for="user-select">Send to:</label>
+        <select id="user-select">
+            <option value="">Broadcast</option>
+        </select>
+        <button id="conn-btn">Disconnect</button>
+    </div>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+        <input id="input" placeholder="Type your message..." />
+        <button type="submit">Send</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const form = document.getElementById('form');
+        const input = document.getElementById('input');
+        const messages = document.getElementById('messages');
+        const userSelect = document.getElementById('user-select');
+        const conn_btn = document.getElementById('conn-btn');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const msg = input.value.trim();
+            if (msg) {
+                const targetSocketId = userSelect.value || null;
+                socket.emit('chat_message', {
+                    message: msg,
+                    targetSocketId
+                }, (err, response) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        console.log(response.status);
+                    }
+                });
+                const li = document.createElement('li');
+                li.textContent = `(You): ${msg}`;
+                messages.appendChild(li);
+                input.value = '';
+            }
+        });
+        conn_btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (socket.connected) {
+                socket.disconnect();
+                conn_btn.textContent = 'Connect';
+            } else {
+                socket.connect();
+                conn_btn.textContent = 'Disconnect';
+            }
+        });
+        socket.on('chat_message', (msg) => {
+            const li = document.createElement('li');
+            li.textContent = msg;
+            messages.appendChild(li);
+        });
+        socket.on('user_list', (userIds) => {
+            const current = socket.id;
+            userSelect.innerHTML = '<option value="">Broadcast</option>';
+            userIds.forEach(id => {
+                if (id !== current) {
+                    const opt = document.createElement('option');
+                    opt.value = id;
+                    opt.textContent = id;
+                    userSelect.appendChild(opt);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Socket.IO chat</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding-bottom: 3rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        #receiver_detail {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 0.25rem;
+            display: flex;
+            height: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        label {
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #form {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 0.25rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        #input,
+        .input {
+            border: none;
+            padding: 0 1rem;
+            flex-grow: 1;
+            border-radius: 2rem;
+            margin: 0.25rem;
+        }
+
+        #input:focus,
+        .input:focus {
+            outline: none;
+        }
+
+        #form>button {
+            background: #333;
+            border: none;
+            padding: 0 1rem;
+            margin: 0.25rem;
+            border-radius: 3px;
+            outline: none;
+            color: #fff;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #messages>li {
+            padding: 0.5rem 1rem;
+            text-align: right;
+            border: 0.5px solid #000;
+        }
+
+        h1,
+        a {
+            padding: 3vmin;
+            text-align: center;
+            background: #000000;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Private Chat Take Place Here<a href="/">Broadcast</a><a href="/room">Room</a></h1>
+    <form id="receiver_detail">
+        <label for="receiver">Enter Receiver ID:</label>
+        <input type="text" class="input" value="">
+    </form>
+    <ul id="messages"></ul>
+    <form id="form">
+        <input id="input" autocomplete="off" />
+        <button>Send</button>
+    </form>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    let username = prompt("Enter a unique username:");
+    while (username === '') {
+        username = prompt("Enter a unique username:");
+    }
+    const socket = io();
+    const form = document.querySelector('#form');
+    const messages_list = document.querySelector('#messages');
+    let input;
+
+    const h4 = document.createElement('h3');
+    document.body.insertBefore(h4, messages_list);
+    h4.style.textAlign = 'center';
+    socket.on('connect', () => {
+        h4.innerText = 'Your User ID: ' + socket.id;
+        socket.emit('connect', (username, socket.id, receiverID));
+    });
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        input = document.querySelector('#input');
+        if (input.value) {
+            const timestamp = new Date().toLocaleTimeString();
+            const receiverID = document.querySelector('.input').value;
+            const message = `${input.value} <br>${timestamp}`;
+            const senderID = socket.id;
+
+            socket.emit('client_messages', { username, senderID, receiverID, message });
+
+            const li = document.createElement('li');
+            li.innerHTML = input.value + `<br>${timestamp}`;
+            messages_list.append(li);
+            input.value = '';
+        }
+    });
+
+    socket.on('server_messages', (message) => {
+        const li = document.createElement('li');
+        li.innerHTML = message;
+        li.style.background = '#bfb9c5';
+        li.style.textAlign = 'left';
+        messages_list.append(li);
+    });
+</script>
+
+</html>
