@@ -2,9 +2,9 @@ import express from 'express';
 import Stripe from 'stripe';
 import bodyparser from 'body-parser';
 import path from 'path';
+const app = express();
 import { config as configDotenv } from 'dotenv';
 configDotenv();
-const app = express();
 
 const stripe = new Stripe(process.env.STRIVE_KEY);
 const Publishable_Key = process.env.Publishable_Key;
